@@ -1,0 +1,38 @@
+!!! 5
+html
+  head
+    meta(name="viewport", content="initial-scale=1.0, user-scalable=no")
+    meta(name="robots", content="noindex, nofollow")
+    block headerstyles
+      link(href="//fonts.googleapis.com/css?family=Droid+Sans:400,700&amp;subset=latin-ext,latin", type="text/css", rel="stylesheet")
+      link(href="/location/css/app.maps2013v1.min.css", type="text/css", rel="stylesheet")
+
+    block headerscripts
+      script(src="//maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=drawing,panoramio,weather", type="text/javascript")
+      //-script(src="/js/plugins/gmaps.infobubble.trunk.js", type="text/javascript")
+      script(src="/js/libs/jquery-1.8.3.min.js", type="text/javascript")
+
+  body
+
+    div#map-canvas(style="width:100%; height:100%")
+
+    div#map-directions.hide
+      div.close
+        strong &times;
+      div#map-directions-results
+
+    div#map-control.hide
+      div.btn-group.btn-group-vertical
+        button.btn.btn-mini(title="Zurück ...", data-mapcontrol="reset") <img src="/location/icons/maps-bubble-avatar.png" alt="">
+        button.btn.btn-mini(title="Panoramio", data-mapcontrol="panoramio") <i class="icon-picture"></i>
+        button.btn.btn-mini(title="Radwege (Labels: on)", data-mapcontrol="bicycling") <i class="icon-play-circle"></i>
+        button.btn.btn-mini(title="Wetter (Zoom: 0-12)", data-mapcontrol="weather") <i class="icon-tint"></i>
+        button.btn.btn-mini(title="Transit (Labels: on) *cities that supports this", data-mapcontrol="transit") <i class="icon-eye-open"></i>
+        button.btn.btn-mini(title="Verkehr (Labels: on)", data-mapcontrol="traffic") <i class="icon-road"></i>
+        button.btn.btn-mini(title="Wolken (Zoom: 0-6)", data-mapcontrol="cloud") <i class="icon-asterisk"></i>
+
+
+    block footerscripts
+      script(src="/location/js/app.maps2013v2.min.js")
+
+

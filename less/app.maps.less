@@ -1,0 +1,230 @@
+@charset "UTF-8";
+
+
+// Core variables and mixins
+@import "variables.less";
+@import "mixins.less";
+
+// Other plugins
+@import "button-groups.less";
+@import "buttons.less";
+@import "forms.less";
+@import "sprites.less";
+
+// Own styles
+html { height: 100% }
+body { height: 100%; margin: 0; padding: 0; font-family: "Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif; }
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+.hide {
+  display: none;
+}
+.hidden {
+  visibility: hidden;
+}
+
+.clearfix {
+  zoom: 1;
+  &:before, &:after {
+    content: '';
+    display: table;
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.infowindow-content {
+
+  #travelmode {
+    width: 100px;
+  }
+
+  #beppeto {
+    width: 120px;
+  }  
+
+  p, h3 {
+    margin: 4px 0;
+    padding: 0;
+    font-weight: normal;        
+  }
+
+  form {
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+  }
+
+  input, select, button {
+    margin-bottom: 0;
+  }
+
+  button {
+    padding-top: 0;
+  }
+
+  input {
+    font-size: 13px;
+    line-height: 16px;
+    height: 16px;
+  }
+
+  select, button {
+    font-size: 13px;
+    line-height: 26px;
+    height: 26px;
+  }
+
+  .control-group {
+    margin-bottom: 2px;
+  }
+
+}
+
+
+#map-canvas img, .google-maps img {
+  max-width: none; // Prevent max-width from affecting Google Maps
+}
+
+#map-control {
+  position: absolute; 
+  top: 4.5em;
+  right: 4.4em;
+  z-index: 9998; 
+  a {
+    text-decoration: none;
+  } 
+  img {
+   border: 0 none;
+   width: 14px;
+   height: 14px;
+   padding: 0;
+   margin-top: 5px;
+   margin-bottom: 0;
+  }
+  .box-shadow(0 0 6px rgba(0,0,0,.66));
+}
+
+#map-canvas { height: 100%, width: 100%; }
+
+#map-directions { 
+  display: none; 
+  position: absolute; 
+  left: 5.4em; 
+  bottom: 5.4em; 
+  z-index: 9997; 
+  background-color: #121212; 
+  width: 450px; 
+  height: 250px; 
+  overflow: hidden; 
+  .border-radius(4px);
+  div, a {
+    color: #efefef;
+  }
+  .adp-details, .adp-legal {
+    color: #ccc;
+  }      
+  div table {
+    background-color: #111;
+    color: #efefef;
+  }
+  .adp-directions {
+    width: 100%;
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
+  }
+  .warnbox-content {
+    color: #FFF1A8;
+    font-style: italic;
+    background-color: #000;
+    border: 0 none;
+  }
+  .warnbox-c1, .warnbox-c2 {
+    background-color: transparent;
+  }
+  #adp-placemark, .adp-placemark {
+    border: 0 none;
+    color: #79ed6d;
+  } 
+
+  div table td {
+    color: #eee;
+    font-weight: normal;
+    border-top-color: #666;
+    padding: 3px 0;
+    b, a {
+      color: #ccc;
+      font-weight: normal;
+    }      
+    &.adp-text {
+      color: #79ed6d;
+      font-size: 14.5px;
+    }
+  }
+
+  ol {
+    background: #333;
+
+    li {
+      background: #333;
+      padding: 3px 0;
+
+      &:nth-child(even) {
+        background: #3c3c3c;
+      }
+
+    }
+  }
+  .adp-list {
+    border: 0 none;
+    border-bottom: 0 none;
+    background: #000;
+    .adp-fullwidth {
+      background: #111;
+    }
+
+    .adp-listheader { 
+      background: #111;
+    }
+  }
+  .adp-listsel {
+    background: #666 !important;
+  }
+
+  &.pull-right {
+    left: auto;
+    right: 3.2em; 
+  }       
+
+  .close {
+    width: 26px;
+    height: 26px;
+    overflow: hidden;
+    position: absolute;
+    opacity: 0.7;
+    right: 0;
+    top: 4px;
+    z-index: 10000;
+    cursor: pointer;
+    font-size: 26px;
+    line-height: 26px;
+    a { font-weight: bold; font-size: 16px; line-height: 18px; text-decoration: none; }
+  }
+
+}
+
+#map-directions-results { 
+  margin: 28px 8px 8px 8px; 
+  height: 215px; 
+  font-size: 12.5px; 
+  overflow: auto; 
+  overflow-y: scroll; 
+  clear: both; 
+}
