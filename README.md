@@ -8,17 +8,16 @@ https://developers.google.com/maps/documentation/javascript/
 # Requirements
 
 * jQuery 1.8+
-* Twitter Bootstrap v2.3.0+
-  * LESS
-    * variables.less
-    * mixins.less
-    * button-groups.less
-    * buttons.less
-    * forms.less
-    * sprites.less
-  * Glyphicons 
-    * img/glyphicons-halflings.png
-    * img/glyphicons-halflings-white.png
+* Twitter Bootstrap v2.3.0+ LESS
+  * variables.less
+  * mixins.less
+  * button-groups.less
+  * buttons.less
+  * forms.less
+  * sprites.less
+* Twitter Bootstrap v2.3.0+ Glyphicons 
+  * img/glyphicons-halflings.png
+  * img/glyphicons-halflings-white.png
 * Modern Browser
 
 **Hands up! See also https://github.com/twitter/bootstrap/wiki/License.**
