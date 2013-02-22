@@ -400,7 +400,6 @@ class BeppesMapinizer
 
   ###
   TransitLayer
-  TODO: a bug? wrong behaviour. on set the transitlayer, it will hide the always existing(?) transitlayer. short: set is 'remove'!
   ###
   getTransit: () ->
     @transit
@@ -503,7 +502,7 @@ google.maps.event.addDomListener window, 'load', ->
 
   if window.parent
     try
-      window.parent.beppesFrameHelper.addClass('loaded');
+      window.parent.beppesFrameHelper.addClass 'loaded'
     catch error
       sowhat = error
 
