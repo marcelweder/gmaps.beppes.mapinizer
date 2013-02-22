@@ -2,20 +2,20 @@
 
 Just my work that I use on my own website.
 
-Learn more about Google Maps JavaScript API v3
+Learn more about Google Maps JavaScript API v3  
 https://developers.google.com/maps/documentation/javascript/
 
 # Requirements
 
 * jQuery 1.8+
-* Twitter Bootstrap v2.3.0+ LESS
+* LESScss: Twitter Bootstrap v2.3.0+
   * variables.less
   * mixins.less
   * button-groups.less
   * buttons.less
   * forms.less
   * sprites.less
-* Twitter Bootstrap v2.3.0+ Glyphicons 
+* Glyphicons: Twitter Bootstrap v2.3.0+
   * img/glyphicons-halflings.png
   * img/glyphicons-halflings-white.png
 * Modern Browser
@@ -24,9 +24,9 @@ https://developers.google.com/maps/documentation/javascript/
 
 # Preparation
 
-1. If you do need it, use a preprocoessor toolkit to compile the LESS files. (for example: folder ```css```, name ```app.maps2013.min.css```)
-2. If you do need it, use a preprocoessor toolkit to compile the COFFEE files. (for example: folder ```js```, name ```app.maps2013.min.js```)
-3. If you do need it, use a preprocoessor toolkit to compile the JADE files. (for example: ```root```, name ```index.html``` or ```index.php```)
+1. If you do need it, use a preprocessor toolkit to compile the LESS files. (for example: folder ```css```, name ```app.maps2013.min.css```)
+2. If you do need it, use a preprocessor toolkit to compile the COFFEE files. (for example: folder ```js```, name ```app.maps2013.min.js```)
+3. If you do need it, use a preprocessor toolkit to compile the JADE files. (for example: ```root```, name ```index.html``` or ```index.php```)
 4. Open up the application in your browser and control your map
 
 # Usage
