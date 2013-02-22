@@ -3,7 +3,6 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta name="robots" content="noindex, nofollow">
-    <link href="//fonts.googleapis.com/css?family=Droid+Sans:400,700&amp;subset=latin-ext,latin" type="text/css" rel="stylesheet">
     <link href="/location/css/app.maps2013v1.min.css" type="text/css" rel="stylesheet">
     <script src="//maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=drawing,panoramio,weather" type="text/javascript"></script>
     <script src="/js/libs/jquery-1.8.3.min.js" type="text/javascript"></script>

@@ -109,7 +109,14 @@ html {
    margin-top: 5px;
    margin-bottom: 0;
   }
-  .box-shadow(0 0 6px rgba(0,0,0,.66));
+  .btn-group {
+    margin: 0;
+    .border-radius(@baseBorderRadius);
+    .box-shadow(0 0 8px rgba(0,0,0,.69));
+    .btn {
+      margin: 0;
+    }
+  }  
 }
 
 #map-canvas { height: 100%, width: 100%; }
