@@ -1,11 +1,10 @@
 ###
-
-Google Maps App, aka BeppesMapinizer
+Google Maps App, aka BeppesMapinizer // jshint ;debug;
 Author: Marcel A. Weder
 
 ###
 
-"use strict"
+"use strict" 
 
 google  = window.google
 $       = window.jQuery
@@ -31,7 +30,11 @@ $beppefrom = $('<div><div class="infowindow-content"><form class="form" id="rout
 class BeppesMapinizer
 
   ###
-  Constructor
+  constructor
+  @param string canvas The id of map container (html element)
+  @param string results The id of result container (html element)
+  @param mixed options
+  @return void
   ###
   constructor: (@canvas, @results, @options) ->
 
@@ -93,7 +96,8 @@ class BeppesMapinizer
       'moiLatLan': null
 
   ###
-  Setup
+  setupMap
+  @return void
   ###
   setupMap: () ->    
     that = @
@@ -117,7 +121,7 @@ class BeppesMapinizer
 
     $mapControl = $('#map-control').show()
     $resultsRouter = $('#map-directions')
-    $resultsRouterContent = $("#map-directions-results")
+    $resultsRouterContent = $('#map-directions-results')
 
     @mapControl = $mapControl
     @resultsRouter = $resultsRouter
@@ -134,7 +138,11 @@ class BeppesMapinizer
       return false
     return
 
-
+  ###
+  stateInfoWin
+  @param boolean state Toggle the visibilty flag
+  @return void
+  ###
   stateInfoWin: (state) ->
     state = state || null
     if state == null
@@ -142,6 +150,10 @@ class BeppesMapinizer
     @infoWinVisible = state
     return
 
+  ###
+  setupInfoWin
+  @return void
+  ###
   setupInfoWin: () ->
     that = @
 
@@ -156,6 +168,10 @@ class BeppesMapinizer
 
     return
 
+  ###
+  setupMarker
+  @return void
+  ###
   setupMarker: () ->
     that = @
 
@@ -227,7 +243,10 @@ class BeppesMapinizer
     mapsMarker options for options in markers
     return
 
-
+  ###
+  initDirections
+  @return void
+  ###
   initDirections: () ->
     @directionsService = new google.maps.DirectionsService()
     @directions = new google.maps.DirectionsRenderer @directionsOptions
@@ -236,6 +255,10 @@ class BeppesMapinizer
       @directions.setPanel @results  
     return
 
+  ###
+  setDirections
+  @return void
+  ###
   setDirections: (opts) ->
     opts = opts || null
     @directions.setMap @map
@@ -243,12 +266,17 @@ class BeppesMapinizer
       @directions.setOptions opts
     return
 
+  ###
+  unsetDirections
+  @return void
+  ###
   unsetDirections: () ->
     @directions.setMap null
     return
 
   ###
-  Init
+  mapInitialize
+  @return void
   ###
   mapInitialize: () ->
     @canvas = document.getElementById @canvas || ""
@@ -281,7 +309,8 @@ class BeppesMapinizer
     return  
 
   ###
-  Router
+  calcRoute
+  @return void
   ###
   calcRoute: () ->
     that = @
@@ -324,7 +353,7 @@ class BeppesMapinizer
     if travelmode == 'TRANSIT'
       # request.origin = 'Bahnhof, 9435 Heerbrugg, Schweiz';
       request.origin = new google.maps.LatLng(47.410387, 9.627245);
-      request.waypoints = []; # on transit doesn't work!
+      request.waypoints = []; # on transit waypoints doesn't work!
 
     # console.log request
 
@@ -339,26 +368,21 @@ class BeppesMapinizer
 
       else
 
-        if status == 'ZERO_RESULTS'
-          that.resultsRouterContent.html 'No route could be found between the origin and destination.'
-
-        else if status == 'UNKNOWN_ERROR'
-          that.resultsRouterContent.html 'A directions request could not be processed due to a server error. The request may succeed if you try again.'
-
-        else if status == 'REQUEST_DENIED'
-          that.resultsRouterContent.html 'This webpage is not allowed to use the directions service.'
-
-        else if status == 'OVER_QUERY_LIMIT'
-          that.resultsRouterContent.html 'The webpage has gone over the requests limit in too short a period of time.'
-
-        else if status == 'NOT_FOUND'
-          that.resultsRouterContent.html 'At least one of the origin, destination, or waypoints could not be geocoded.'
-
-        else if status == 'INVALID_REQUEST'
-          that.resultsRouterContent.html 'The DirectionsRequest provided was invalid.'  
-
-        else
-          that.resultsRouterContent.html "There was an unknown error in your request. Requeststatus: " + status
+        switch status
+          when 'ZERO_RESULTS'
+            that.resultsRouterContent.html 'No route could be found between the origin and destination.'
+          when 'UNKNOWN_ERROR'
+            that.resultsRouterContent.html 'A directions request could not be processed due to a server error. The request may succeed if you try again.'
+          when 'REQUEST_DENIED'
+            that.resultsRouterContent.html 'This webpage is not allowed to use the directions service.'
+          when 'OVER_QUERY_LIMIT'
+            that.resultsRouterContent.html 'The webpage has gone over the requests limit in too short a period of time.'
+          when 'NOT_FOUND'
+            that.resultsRouterContent.html 'At least one of the origin, destination, or waypoints could not be geocoded.'
+          when 'INVALID_REQUEST'
+            that.resultsRouterContent.html 'The DirectionsRequest provided was invalid.'
+          else
+            that.resultsRouterContent.html "There was an unknown error in your request. Requeststatus: " + status
 
       that.resultsRouter.show()
       return
@@ -367,7 +391,11 @@ class BeppesMapinizer
 
 
   ###
-  Panoramino
+  MapLayers Helper (get/set/unset)
+  ###
+
+  ###
+  PanoraminoLayer
   ###
   getPanoramino: () ->
     @panoramio
@@ -500,6 +528,26 @@ Run, you know ...
 ###
 google.maps.event.addDomListener window, 'load', ->
 
+  ###
+  Try to communicate with parent window ...
+
+  coffee:
+  window.beppesFrameHelper = 
+    addClass: (str) ->
+      $mapsWrapper.addClass str
+    removeClass: (str) ->
+      $mapsWrapper.removeClass str 
+
+  javascript:
+  window.beppesFrameHelper = {
+    addClass: function(str) {
+      return $mapsWrapper.addClass(str);
+    },
+    removeClass: function(str) {
+      return $mapsWrapper.removeClass(str);
+    }
+  };
+  ###
   if window.parent
     try
       window.parent.beppesFrameHelper.addClass 'loaded'
@@ -527,7 +575,9 @@ google.maps.event.addDomListener window, 'load', ->
         if activated then mapMe.unsetTransit() else mapMe.setTransit()
     return
 
-
+  ###
+  Add event listener
+  ###
   $('#map-control').on  
 
     'deactivated': ->
